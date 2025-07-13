@@ -1,0 +1,1716 @@
+/* Purge all custom FullCalendar styles to restore default look */
+
+/* Only keep your non-calendar related styles below this line */
+
+
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #FFFFFF;
+    color: #222;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Sidebar, modal, and other non-calendar styles can remain here */
+/* ... (keep your sidebar, modal, and other unrelated styles) ... */
+
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #ffffff;
+}
+
+.header h1 i {
+    color: #ffd700;
+    margin-right: 15px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 15px;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.user-name {
+    font-weight: 600;
+    color: #222;
+    font-size: 0.9rem;
+}
+
+.user-role {
+    font-size: 0.8rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.user-email {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255, 0, 0, 0.1);
+    color: #dc2626;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.logout-btn:hover {
+    background: rgba(255, 0, 0, 0.2);
+    color: #b91c1c;
+    transform: translateY(-1px);
+}
+
+/* Filters Panel */
+.filters-panel {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.filter-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.filter-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #ffd700;
+}
+
+.filter-group input[type="checkbox"]:checked {
+    background-color: #ffd700;
+}
+
+/* Calendar Container */
+.calendar-container {
+    background: #fff;
+    border-radius: 32px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    padding: 40px 32px 32px 32px;
+    min-height: 600px;
+}
+
+#calendar {
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 24px;
+    min-height: 500px;
+}
+
+/* Loading and Error States */
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.loading::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ddd;
+    border-top: 2px solid #ffd700;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.error-message {
+    background: #fee;
+    color: #c33;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px 0;
+    border-left: 4px solid #c33;
+    font-size: 0.9rem;
+}
+
+.success-message {
+    background: #efe;
+    color: #363;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px 0;
+    border-left: 4px solid #363;
+    font-size: 0.9rem;
+}
+
+/* Sidebar and button */
+.sidebar {
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 32px 24px;
+    min-width: 260px;
+    max-width: 320px;
+    margin: 32px 0 0 32px;
+}
+.update-availability-btn {
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    color: #222;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+}
+.update-availability-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+}
+
+/* Remove duplicate date numbers if any */
+.fc-daygrid-day .fc-daygrid-day-number + .fc-daygrid-day-number {
+    display: none;
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+    .calendar-container, #calendar, .fc {
+        border-radius: 16px;
+        padding: 8px;
+    }
+    .sidebar {
+        margin: 16px 0 0 0;
+        padding: 16px 8px;
+    }
+}
+
+/* Modern modal overlay and box styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background: rgba(20, 30, 50, 0.55); /* semi-transparent dark overlay */
+    backdrop-filter: blur(2px);
+    transition: background 0.3s;
+}
+
+.modal-content {
+    background: #fff;
+    margin: 60px auto;
+    border-radius: 18px;
+    padding: 36px 32px 28px 32px;
+    border: none;
+    max-width: 420px;
+    box-shadow: 0 8px 32px rgba(30, 64, 175, 0.18), 0 1.5px 8px rgba(0,0,0,0.10);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    animation: modalPopIn 0.25s cubic-bezier(.4,2,.6,1) 1;
+}
+
+@keyframes modalPopIn {
+    from { transform: translateY(40px) scale(0.98); opacity: 0; }
+    to   { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.close {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    font-size: 1.6rem;
+    color: #1e293b;
+    background: #e0e7ef;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    z-index: 10;
+}
+.close:hover {
+    background: #2563eb;
+    color: #fff;
+}
+
+/* Modal content styling */
+#booking-details {
+    font-size: 1.08rem;
+    color: #222;
+    margin-bottom: 18px;
+}
+#booking-details h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #2563eb;
+    margin-bottom: 18px;
+    letter-spacing: 0.2px;
+}
+#booking-details .booking-detail {
+    margin-bottom: 10px;
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    font-size: 1.05rem;
+}
+#booking-details .booking-detail strong {
+    font-weight: 600;
+    color: #1e293b;
+    min-width: 110px;
+    display: inline-block;
+}
+.booking-link {
+    color: #2563eb;
+    text-decoration: underline;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.booking-link:hover {
+    color: #1d4ed8;
+}
+
+.booking-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 18px;
+}
+
+.btn-secondary {
+    background: #e0e7ef;
+    color: #1e293b;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.btn-secondary:hover {
+    background: #2563eb;
+    color: #fff;
+}
+
+/* Message animations */
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOut {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .filters-panel {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 20px auto;
+    }
+    
+    .fc-toolbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .fc-toolbar-chunk {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .fc-button {
+        font-size: 0.9rem !important;
+        padding: 6px 12px !important;
+    }
+    
+    .fc-event {
+        font-size: 0.65rem;
+        padding: 2px;
+    }
+    
+    .booking-actions {
+        flex-direction: column;
+    }
+    
+    .btn-secondary {
+        width: 100%;
+        margin: 2px 0;
+    }
+}
+
+/* Main layout */
+.main-layout {
+    display: flex;
+    min-height: 100vh;
+    background: #FFFFFF;
+}
+
+.sidebar {
+    width: 320px;
+    background: #fff;
+    border-radius: 18px;
+    margin: 24px 0 24px 24px;
+    box-shadow: 0 2px 16px 0 rgba(0,0,0,0.06);
+    padding: 32px 24px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    min-width: 280px;
+    max-width: 340px;
+    height: fit-content;
+}
+
+.sidebar-section {
+    margin-bottom: 18px;
+}
+
+.listing-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+.listing-image img {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.listing-title {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #222;
+}
+.listing-desc {
+    font-size: 0.95em;
+    color: #888;
+}
+
+.listing-list h4,
+.calendar-sync h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.listing-list h4 i {
+    margin-right: 8px;
+    color: #3b82f6;
+}
+
+.listing-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.listing-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    font-size: 0.9rem;
+    color: #475569;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.listing-list li:last-child {
+    border-bottom: none;
+}
+
+/* Checkbox styles for listings */
+.listing-checkbox {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    cursor: pointer;
+    accent-color: #3b82f6;
+    flex-shrink: 0;
+}
+
+.listing-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    cursor: pointer;
+    padding: 2px 0;
+}
+
+.listing-checkbox-label:hover {
+    background-color: #f8fafc;
+    border-radius: 4px;
+    padding: 2px 4px;
+    margin: -2px -4px;
+}
+
+/* Mobile responsive adjustments for checkboxes */
+@media (max-width: 700px) {
+    .listing-checkbox {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .listing-checkbox-label {
+        gap: 8px;
+    }
+    
+    .listing-name {
+        font-size: 0.85rem;
+    }
+}
+
+.listing-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+}
+
+.listing-name {
+    font-weight: 500;
+    color: #1e293b;
+    flex: 1;
+}
+
+.edit-listing-btn {
+    background: none;
+    border: none;
+    color: #6b7280;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    font-size: 0.8rem;
+}
+
+.edit-listing-btn:hover {
+    color: #3b82f6;
+    background-color: #f3f4f6;
+}
+
+/* View listing button styles */
+.view-listing-btn {
+    background: none;
+    border: none;
+    color: #6b7280;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    font-size: 0.8rem;
+    margin-right: 4px;
+}
+
+.view-listing-btn:hover {
+    color: #10b981;
+    background-color: #f3f4f6;
+}
+
+/* iCal link styles */
+.ical-link {
+    color: #3b82f6;
+    text-decoration: none;
+    word-break: break-all;
+    display: inline-block;
+    max-width: 100%;
+}
+
+.ical-link:hover {
+    text-decoration: underline;
+}
+
+.no-links {
+    color: #6b7280;
+    font-style: italic;
+}
+
+.sync-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.sync-icon {
+    color: #d32f2f;
+    font-size: 1.1em;
+}
+.sync-label {
+    color: #d32f2f;
+    font-weight: 600;
+}
+.sync-warning {
+    background: #fff3ed;
+    color: #b85c3b;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 0.95em;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.calendar-export {
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+}
+.calendar-link, .calendar-download {
+    color: #222;
+    text-decoration: none;
+    font-size: 0.97em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.2s;
+}
+.calendar-link:hover, .calendar-download:hover {
+    color: #d32f2f;
+}
+
+.main-content {
+    flex: 1;
+    margin: 24px 24px 24px 0;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 2px 16px 0 rgba(0,0,0,0.06);
+    padding: 0 0 24px 0;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 20px 0;
+}
+.calendar-title h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #222;
+    margin: 0;
+}
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.update-availability-btn {
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    color: #222;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+}
+
+.update-availability-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+}
+
+.calendar-container {
+    padding: 24px 32px 0 32px;
+}
+#calendar {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+    padding: 0;
+}
+
+/* FullCalendar Customization */
+.fc {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fff;
+    border-radius: 12px;
+}
+.fc-toolbar {
+    margin-bottom: 16px;
+}
+.fc-toolbar-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #222;
+}
+.fc-daygrid-day {
+    background: #f7f7f5;
+    border: 1px solid #ececec;
+    min-height: 80px;
+    position: relative;
+    transition: background 0.2s;
+}
+/* .fc-daygrid-day.fc-day-today { */
+    /* background: #fffbe6; */
+    /* border: 2px solid #ffd700; */
+/* } */
+.fc .fc-daygrid-day.fc-day-today {
+	background-color: #fff !important;
+}
+.fc-daygrid-day-number {
+    color: #222;
+    font-weight: 500;
+    font-size: 1.1em;
+    margin: 6px 0 0 6px;
+}
+.fc-col-header-cell {
+    background: #f7f7f5;
+    color: #888;
+    font-weight: 600;
+    padding: 12px 0;
+    border: none;
+}
+.fc-event {
+    border-radius: 8px;
+    border: none;
+    margin: 2px 0;
+    padding: 8px 12px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+.fc-event:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+.fc-event-title {
+    font-weight: 600;
+}
+.fc-event-time {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Custom cell states */
+.fc-daygrid-day[data-unavailable="true"] {
+    background: #f2f2f2;
+    color: #bbb;
+}
+.fc-daygrid-day[data-blocked="true"] {
+    background: #fbeaea;
+    color: #b85c3b;
+}
+.fc-daygrid-day .price {
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+    font-size: 1.05em;
+    color: #444;
+    font-weight: 500;
+}
+.fc-daygrid-day .blocked-label {
+    position: absolute;
+    top: 32px;
+    left: 12px;
+    font-size: 0.98em;
+    color: #b85c3b;
+    font-weight: 600;
+}
+.fc-daygrid-day .unavailable-label {
+    position: absolute;
+    top: 32px;
+    left: 12px;
+    font-size: 0.98em;
+    color: #bbb;
+    font-weight: 600;
+}
+
+/* Additional debugging and display styles */
+.fc-daygrid-day {
+    min-height: 100px;
+    position: relative;
+}
+
+/* Ensure calendar is visible */
+#calendar {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+    padding: 20px;
+    min-height: 500px;
+}
+
+/* Debug styles to ensure calendar loads */
+.fc {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fff;
+    border-radius: 12px;
+    min-height: 400px;
+}
+
+.fc-toolbar {
+    margin-bottom: 16px;
+    padding: 10px;
+}
+
+.fc-toolbar-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #222;
+}
+
+/* Ensure events are visible and properly styled */
+
+/* Responsive */
+@media (max-width: 1100px) {
+    .main-layout {
+        flex-direction: column;
+    }
+    .sidebar {
+        margin: 24px auto 0 auto;
+        width: 95vw;
+        max-width: 98vw;
+    }
+    .main-content {
+        margin: 24px auto 24px auto;
+        width: 95vw;
+        max-width: 98vw;
+    }
+    .calendar-header, .calendar-container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}
+@media (max-width: 700px) {
+    .main-layout {
+        flex-direction: column;
+    }
+    .sidebar, .main-content {
+        margin: 12px auto;
+        width: 99vw;
+        max-width: 99vw;
+        border-radius: 10px;
+        padding: 12px;
+    }
+    .calendar-header, .calendar-container {
+        padding: 0 4px;
+    }
+}
+
+/* --- Modal Form Improvements --- */
+#booking-notes-section, #assign-driver-section {
+    margin-top: 18px;
+    background: #f6f8fa;
+    border-radius: 10px;
+    padding: 18px 16px 14px 16px;
+    box-shadow: 0 1px 4px rgba(30,64,175,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+#booking-notes-section h3, #assign-driver-section h3 {
+    font-size: 1.08rem;
+    color: #2563eb;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+#booking-notes-section label, #assign-driver-section label {
+    font-size: 1rem;
+    color: #1e293b;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+#booking-notes {
+    width: 100%;
+    min-height: 70px;
+    font-size: 1rem;
+    border-radius: 7px;
+    border: 1.5px solid #cbd5e1;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    resize: vertical;
+    background: #fff;
+    color: #222;
+    transition: border 0.2s;
+}
+#booking-notes:focus {
+    border-color: #2563eb;
+    outline: none;
+}
+#save-notes-btn {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 8px 18px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    align-self: flex-end;
+    margin-top: 2px;
+    transition: background 0.2s;
+}
+#save-notes-btn:hover {
+    background: #1d4ed8;
+}
+#assign-driver-section .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+#assign-driver-section input, #assign-driver-section select {
+    width: 100%;
+    font-size: 1rem;
+    border-radius: 7px;
+    border: 1.5px solid #cbd5e1;
+    padding: 8px 12px;
+    margin-top: 2px;
+    background: #fff;
+    color: #222;
+    transition: border 0.2s;
+}
+#assign-driver-section input:focus, #assign-driver-section select:focus {
+    border-color: #2563eb;
+    outline: none;
+}
+#assign-btn {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 8px 18px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    align-self: flex-end;
+    margin-top: 2px;
+    transition: background 0.2s;
+}
+#assign-btn:hover {
+    background: #1d4ed8;
+}
+
+.add-event-btn {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 22px;
+    font-size: 1.08rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 12px;
+    box-shadow: 0 2px 8px rgba(30,64,175,0.08);
+    transition: background 0.2s, color 0.2s;
+}
+.add-event-btn:hover {
+    background: #1d4ed8;
+    color: #fff;
+}
+
+/* FullCalendar header always row, responsive font size */
+.fc-header-toolbar {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: nowrap !important;
+  gap: 0.5rem;
+}
+.fc-toolbar-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+@media (max-width: 600px) {
+  .fc-toolbar-title {
+    font-size: 1rem;
+  }
+  .fc-header-toolbar {
+    gap: 0.25rem;
+  }
+}
+/* Style Add Event and Add Listing buttons in FullCalendar header */
+.fc-addEvent-button,
+.fc-addListing-button {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1.1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(30,64,175,0.08);
+  transition: background 0.2s, color 0.2s;
+  margin-left: 8px;
+}
+.fc-addEvent-button:hover,
+.fc-addListing-button:hover {
+  background: #1d4ed8;
+  color: #fff;
+}
+
+/* --- Google Calendar-like FullCalendar Styles --- */
+
+/* Event pill style */
+.fc .fc-event {
+  border-radius: 9999px !important;
+  box-shadow: 0 2px 8px 0 rgba(60,64,67,0.08);
+  border: none !important;
+  padding: 2px 12px !important;
+  font-weight: 500;
+  font-size: 0.98rem;
+  line-height: 1.4;
+  transition: box-shadow 0.2s, background 0.2s;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Event hover effect */
+.fc .fc-event:hover {
+  box-shadow: 0 4px 16px 0 rgba(60,64,67,0.16);
+  filter: brightness(1.08);
+  cursor: pointer;
+}
+
+/* Event title bold, subtitle smaller (if using eventContent) */
+.fc-event-title {
+  font-weight: 600;
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fc-event-subtitle {
+  font-size: 0.85rem;
+  color: #e0e0e0;
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+/* Lighter grid lines */
+.fc .fc-scrollgrid, .fc .fc-scrollgrid-section {
+  border-color: #e3e6ea !important;
+}
+.fc .fc-daygrid-day {
+  background: #fff;
+}
+
+/* More whitespace in cells */
+.fc .fc-daygrid-day-frame {
+  padding: 8px 4px 16px 4px;
+}
+
+/* Header styles */
+.fc .fc-toolbar {
+  background: #fff;
+  /* border-bottom: 1px solid #e3e6ea; */
+  padding: 12px 0 8px 0;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 0px !important;
+}
+.fc .fc-toolbar-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #202124;
+  letter-spacing: -0.5px;
+}
+
+/* Prev/Next buttons */
+.fc .fc-button {
+  background: #fff;
+  color: #4285f4;
+  border: 1px solid #e3e6ea;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 1rem;
+  box-shadow: none;
+  transition: background 0.15s, color 0.15s;
+  margin: 0 2px;
+  padding: 6px 14px;
+}
+.fc .fc-button:hover, .fc .fc-button:focus {
+  background: #f1f3f4;
+  color: #174ea6;
+}
+
+/* Add Event and Add Listing buttons (Google style) */
+.fc .fc-addEvent-button,
+.fc .fc-addListing-button {
+  background: #4285f4 !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 9999px !important;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px 0 rgba(60,64,67,0.10);
+  padding: 8px 22px !important;
+  margin-left: 10px;
+  transition: background 0.15s;
+}
+.fc .fc-addEvent-button:hover, .fc .fc-addEvent-button:focus,
+.fc .fc-addListing-button:hover, .fc .fc-addListing-button:focus {
+  background: #174ea6 !important;
+}
+
+/* Responsive font for calendar */
+@media (max-width: 640px) {
+  .fc .fc-toolbar-title {
+    font-size: 1.1rem;
+  }
+  .fc .fc-event {
+    font-size: 0.92rem;
+    padding: 2px 6px !important;
+  }
+}
+
+/* Hide event border on focus */
+.fc .fc-event:focus {
+  outline: none !important;
+  box-shadow: 0 4px 16px 0 rgba(60,64,67,0.16);
+}
+
+/* --- End Google Calendar-like Styles --- */
+
+/* --- Smaller font sizes for compact Google Calendar look --- */
+
+.fc .fc-event {
+  font-size: 0.85rem !important;
+}
+.fc-event-title {
+  font-size: 0.92rem !important;
+}
+.fc-event-subtitle {
+  font-size: 0.78rem !important;
+}
+.fc .fc-toolbar-title {
+  font-size: 1.08rem !important;
+}
+.fc .fc-button {
+  font-size: 0.92rem !important;
+  padding: 4px 10px !important;
+}
+.fc .fc-addEvent-button,
+.fc .fc-addListing-button {
+  font-size: 0.95rem !important;
+  padding: 6px 16px !important;
+}
+.fc .fc-daygrid-day-number {
+  font-size: 0.85rem !important;
+}
+
+@media (max-width: 640px) {
+  .fc .fc-toolbar-title {
+    font-size: 0.82rem !important;
+  }
+  .fc .fc-event {
+    font-size: 0.68rem !important;
+    padding: 1px 3px !important;
+  }
+}
+/* --- End smaller font sizes --- */
+
+/* --- Even more compact font sizes and spacing --- */
+
+.fc .fc-event {
+  font-size: 0.74rem !important;
+}
+.fc-event-title {
+  font-size: 0.82rem !important;
+}
+.fc-event-subtitle {
+  font-size: 0.7rem !important;
+}
+.fc .fc-toolbar-title {
+  font-size: 0.92rem !important;
+}
+.fc .fc-button {
+  font-size: 0.82rem !important;
+  padding: 2px 7px !important;
+}
+.fc .fc-addEvent-button,
+.fc .fc-addListing-button {
+  font-size: 0.85rem !important;
+  padding: 4px 10px !important;
+}
+.fc .fc-daygrid-day-number {
+  font-size: 0.74rem !important;
+}
+
+@media (max-width: 640px) {
+  .fc .fc-toolbar-title {
+    font-size: 0.82rem !important;
+  }
+  .fc .fc-event {
+    font-size: 0.68rem !important;
+    padding: 1px 3px !important;
+  }
+}
+/* --- End even more compact font sizes --- */
+
+/* --- Make event title extra small and normal weight --- */
+.fc-event-title {
+  font-size: 0.6rem !important;
+  font-weight: 400 !important;
+}
+@media (max-width: 640px) {
+  .fc-event-title {
+    font-size: 0.5rem !important;
+    font-weight: 400 !important;
+  }
+}
+/* --- End extra small, normal weight event title --- */
+
+/* --- Make event bars slimmer --- */
+.fc .fc-event {
+  line-height: 1.1 !important;
+  min-height: 16px !important;
+  height: 16px !important;
+}
+@media (max-width: 640px) {
+  .fc .fc-event {
+    min-height: 14px !important;
+    height: 15px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    line-height: 1 !important;
+  }
+}
+/* --- End slimmer event bars --- */
+
+/* --- All event bars same color --- */
+/* .fc .fc-event, .fc .fc-event-selected {
+  background: #4285f4 !important;
+  border-color: #4285f4 !important;
+  color: #fff !important;
+} */
+/* --- End all event bars same color --- */
+
+/* --- Google Calendar-style week days header --- */
+.fc .fc-col-header-cell {
+  background: #fff !important;
+  /* border: none !important; */
+  padding: 8px 0 !important;
+}
+.fc .fc-col-header-cell-cushion {
+  color: #5f6368 !important;
+  font-weight: 600 !important;
+  font-size: 0.92rem !important;
+  letter-spacing: 0.02em;
+  background: transparent !important;
+}
+/* --- End Google Calendar-style week days header --- */
+
+/* --- Google Calendar-style calendar border radius and shadow --- */
+.fc, .calendar-container {
+  border-radius: 16px !important;
+  box-shadow: 0 2px 16px 0 rgba(60,64,67,0.08);
+  overflow: hidden;
+}
+/* --- End Google Calendar-style border radius and shadow --- */
+
+/* --- Force border radius on all calendar layers --- */
+.calendar-container,
+.fc,
+.fc-scrollgrid,
+.fc-view-harness,
+.fc-view-harness-active,
+.fc-daygrid,
+.fc-daygrid-body,
+.fc-daygrid-body table,
+.fc-daygrid-body .fc-scrollgrid-sync-table {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+/* --- End force border radius --- */
+
+/* --- Page effect for today cell date number --- */
+.fc .fc-day-today .fc-daygrid-day-number {
+  position: relative;
+  z-index: 1;
+}
+.fc .fc-day-today .fc-daygrid-day-number::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-2deg);
+  width: 2.1em;
+  height: 2.1em;
+  background: #4285f4;
+  border: 1.5px solid #4285f4;
+  border-radius: 0.35em;
+  box-shadow: 0 2px 8px 0 rgba(255, 193, 7, 0.10);
+  z-index: -1;
+}
+/* --- End page effect for today cell --- */ 
+
+/* iCal Link Styles */
+.booking-detail input[readonly] {
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    color: #495057;
+    cursor: text;
+}
+
+.booking-detail input[readonly]:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.booking-detail button {
+    white-space: nowrap;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.booking-detail button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments for iCal link */
+@media (max-width: 640px) {
+    .booking-detail .flex {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .booking-detail input[readonly] {
+        font-size: 0.7rem;
+    }
+    
+    .booking-detail button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Image Upload Styles */
+#listing_picture {
+    font-size: 0.875rem;
+}
+
+#listing_picture::-webkit-file-upload-button {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-right: 8px;
+}
+
+#listing_picture::-webkit-file-upload-button:hover {
+    background: #2563eb;
+}
+
+#image_preview {
+    transition: all 0.3s ease;
+}
+
+#preview_img {
+    transition: transform 0.2s ease;
+}
+
+#preview_img:hover {
+    transform: scale(1.02);
+}
+
+/* File input container */
+.flex.items-center.gap-2 {
+    align-items: stretch;
+}
+
+/* Preview button styling */
+button[onclick="previewImage()"] {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Responsive adjustments for image upload */
+@media (max-width: 640px) {
+    .flex.items-center.gap-2 {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    button[onclick="previewImage()"] {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    #listing_picture {
+        font-size: 0.8rem;
+    }
+} 
+
+/* Select2 custom styles for event listings */
+.select2-container--default .select2-selection--multiple {
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    min-height: 42px;
+    padding: 4px 8px;
+    background-color: #ffffff;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    outline: none;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #3b82f6;
+    border: 1px solid #2563eb;
+    border-radius: 0.375rem;
+    color: white;
+    font-size: 0.875rem;
+    padding: 4px 8px;
+    margin: 2px;
+    display: inline-flex;
+    align-items: center;
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    color: white;
+    margin-right: 5px;
+    font-weight: bold;
+    font-size: 1.1em;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.15s ease-in-out;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+    color: #fbbf24;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__rendered {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    align-items: center;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__placeholder {
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.select2-dropdown {
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    background-color: #ffffff;
+    z-index: 9999;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.select2-container--default .select2-results__option[aria-selected=true] {
+    background-color: #e5e7eb;
+    color: #374151;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    padding: 8px 12px;
+    font-size: 0.875rem;
+    outline: none;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.select2-results__option {
+    padding: 8px 12px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.select2-results__option:hover {
+    background-color: #f3f4f6;
+}
+
+/* Select2 button container styles */
+.select2-buttons-container {
+    display: flex;
+    gap: 8px;
+    padding: 8px;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 8px;
+}
+
+/* Select All button styles */
+.select-all-btn {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    flex: 1;
+    transition: background-color 0.2s ease;
+}
+
+.select-all-btn:hover {
+    background-color: #2563eb;
+}
+
+.select-all-btn:active {
+    background-color: #1d4ed8;
+}
+
+/* Clear All button styles */
+.clear-all-btn {
+    background-color: #6b7280;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    flex: 1;
+    transition: background-color 0.2s ease;
+}
+
+.clear-all-btn:hover {
+    background-color: #4b5563;
+}
+
+.clear-all-btn:active {
+    background-color: #374151;
+}
+
+/* Responsive design for Select2 */
+@media (max-width: 640px) {
+    .select2-container--default .select2-selection--multiple {
+        min-height: 48px;
+        padding: 6px 10px;
+    }
+    
+    .select2-buttons-container {
+        flex-direction: column;
+        gap: 4px;
+        padding: 6px;
+    }
+    
+    .select-all-btn,
+    .clear-all-btn {
+        padding: 8px 12px;
+        font-size: 0.875rem;
+    }
+    
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        font-size: 0.75rem;
+        padding: 2px 6px;
+        margin: 1px;
+        max-width: calc(100% - 4px);
+    }
+    
+    .select2-dropdown {
+        max-width: calc(100vw - 32px);
+        left: 16px !important;
+        right: 16px !important;
+    }
+    
+    .select2-container--default .select2-search--dropdown .select2-search__field {
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding: 10px 12px;
+    }
+}
+
+/* Accessibility improvements */
+.select2-container--default .select2-selection--multiple:focus-within {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.select2-container--default .select2-results__option[aria-selected="true"] {
+    background-color: #e5e7eb;
+    color: #374151;
+    font-weight: 500;
+}
+
+.select2-container--default .select2-results__option[aria-selected="true"]:hover {
+    background-color: #d1d5db;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .select2-container--default .select2-selection--multiple {
+        border-width: 2px;
+    }
+    
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        border-width: 2px;
+    }
+    
+    .select2-dropdown {
+        border-width: 2px;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .select2-container--default .select2-selection--multiple,
+    .select2-container--default .select2-selection--multiple .select2-selection__choice,
+    .select2-container--default .select2-selection--multiple .select2-selection__choice__remove,
+    .select2-container--default .select2-search--dropdown .select2-search__field,
+    .select2-results__option {
+        transition: none;
+    }
+}
+
+/* Form button states */
+#add-event-form button[type="submit"] {
+    transition: all 0.2s ease-in-out;
+}
+
+#add-event-form button[type="submit"]:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #9ca3af !important;
+    border-color: #9ca3af !important;
+}
+
+#add-event-form button[type="submit"]:disabled:hover {
+    background-color: #9ca3af !important;
+    border-color: #9ca3af !important;
+    transform: none;
+}
